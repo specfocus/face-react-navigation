@@ -1,0 +1,1 @@
+export { unstable_HistoryRouter as HistoryRouter, type HistoryRouterProps } from 'react-router-dom';

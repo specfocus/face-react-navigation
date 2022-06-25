@@ -1,0 +1,1 @@
+export { useNavigationType, type NavigationType } from 'react-router-dom';
