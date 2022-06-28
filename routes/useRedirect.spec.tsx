@@ -5,7 +5,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import { CoreAdminContext } from '../core';
+import { BaseRootContext } from '../core';
 import { useRedirect } from './useRedirect';
 import { testDataProvider } from '../dataProvider';
 
@@ -41,7 +41,7 @@ const Component = () => {
 describe('useRedirect', () => {
   it('should redirect to the path with query string', async () => {
     render(
-      <CoreAdminContext
+      <BaseRootContext
         dataProvider={testDataProvider()}
         history={createMemoryHistory()}
       >
@@ -52,7 +52,7 @@ describe('useRedirect', () => {
           />
           <Route path="foo" element={<Component />} />
         </Routes>
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     await waitFor(() => {
       expect(screen.queryByDisplayValue('?bar=baz')).not.toBeNull();
@@ -60,7 +60,7 @@ describe('useRedirect', () => {
   });
   it('should redirect to the path with state', async () => {
     render(
-      <CoreAdminContext
+      <BaseRootContext
         dataProvider={testDataProvider()}
         history={createMemoryHistory()}
       >
@@ -76,7 +76,7 @@ describe('useRedirect', () => {
           />
           <Route path="/foo" element={<Component />} />
         </Routes>
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     await waitFor(() => {
       expect(
@@ -93,12 +93,12 @@ describe('useRedirect', () => {
     // @ts-ignore
     window.location = { href: '' };
     render(
-      <CoreAdminContext
+      <BaseRootContext
         dataProvider={testDataProvider()}
         history={createMemoryHistory()}
       >
         <Redirect redirectTo="https://google.com" />
-      </CoreAdminContext>
+      </BaseRootContext>
     );
     expect(window.location.href).toBe('https://google.com');
     window.location = oldLocation;

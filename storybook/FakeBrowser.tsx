@@ -11,7 +11,7 @@ import { ReactNode, useEffect, useState } from 'react';
  *
  * @example Usage in a storybook
  * export default {
- *     title: 'Admin/CustomRoutes/Authenticated',
+ *     title: 'view-focus/CustomRoutes/Authenticated',
  *     decorators: [FakeBrowserDecorator],
  *     parameters: {
  *         // You can pass the react-router history initial entries like this
